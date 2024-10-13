@@ -3,29 +3,36 @@ package StackandQueueDemo;
 import java.util.Stack;
 
 public class StudentStack {
-    public void pushStudents(Stack<String> stack) {
+    public void pushStudents(Stack<Student> stack) {
         System.out.println("Adding students to the stack...");
-        stack.push("Son");
-        System.out.println("Pushed: Son");
-        stack.push("Minh");
-        System.out.println("Pushed: Minh");
-        stack.push("Phuc");
-        System.out.println("Pushed: Phuc");
+        stack.push(new Student(1, "Son", 8.0));
+        System.out.println("Pushed: " + stack.peek());
+        stack.push(new Student(2, "Minh", 5.5));
+        System.out.println("Pushed: " + stack.peek());
+        stack.push(new Student(3, "Phuc", 7.0));
+        System.out.println("Pushed: " + stack.peek());
     }
 
-    public void popStudents(Stack<String> stack) {
-        System.out.println("Removing students from the stack...");
-        while (!stack.isEmpty()) {
-            System.out.println("Popped: " + stack.pop());
+    public void popStudents(Stack<Student> stack) {
+        if (!stack.isEmpty()) {
+            Student removedStudent = stack.pop();
+            System.out.println("Removed: " + removedStudent);
+        } else {
+            System.out.println("Stack is empty, no student to remove.");
         }
-        System.out.println("Stack is empty.");
     }
-
-    public static void main(String[] args) {
-        Stack<String> student = new Stack<>();
-        StudentStack studentStack = new StudentStack();
-
-        studentStack.pushStudents(student);
-        studentStack.popStudents(student);
+    public void peekStudent(Stack<Student> stack) {
+        if (!stack.isEmpty()) {
+            System.out.println("Top student: " + stack.peek());
+        } else {
+            System.out.println("Stack is empty.");
+        }
+    }
+    public void checkIsEmpty(Stack<Student> stack) {
+        if (stack.isEmpty()) {
+            System.out.println("The stack is empty.");
+        } else {
+            System.out.println("The stack is not empty.");
+        }
     }
 }
